@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0f172a">
+<title>JMKCC Mega Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Poppins',sans-serif;background:#0f172a;color:#f8fafc;padding:16px;padding-bottom:50px;}
+.header{text-align:center;margin-bottom:20px;padding-top:10px;}
+.header h1{font-size:22px;font-weight:800;color:#fff;}
+.header p{font-size:12px;color:#94a3b8;font-weight:500;}
+.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:16px;margin-bottom:16px;}
+.card h3{font-size:13px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #334155;padding-bottom:8px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.subject-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #334155;}
+.subject-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.subject-name{grid-column:span 3;font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.btn{padding:12px 8px;border-radius:10px;border:none;font-weight:700;font-size:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;transition:all 0.15s;color:#fff;text-align:center;}
+.btn:active{transform:scale(0.95);}
+.btn i{font-size:16px;}
+.bg-green{background:#16a34a;}
+.bg-red{background:#dc2626;}
+.bg-blue{background:#2563eb;}
+.bg-dark{background:#475569;}
+.bg-amber{background:#d97706;}
+.bg-purple{background:#7c3aed;}
+.btn-full{grid-column:span 2;}
+.btn-full-3{grid-column:span 3;}
+.input-group{margin-bottom:12px;}
+.input-group label{display:block;font-size:12px;font-weight:600;color:#94a3b8;margin-bottom:6px;}
+.input-group input{width:100%;height:46px;background:#0f172a;border:1px solid #334155;border-radius:10px;padding:0 14px;color:#fff;font-size:14px;font-family:inherit;outline:none;}
+.input-group input:focus{border-color:#3b82f6;}
+.bot-badge{background: #22c55e20; border: 1px solid #22c55e; color: #22c55e; padding: 10px; border-radius: 10px; text-align: center; font-weight: 700; font-size: 14px; margin-bottom: 10px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><i class="fas fa-shield-halved" style="color:#22c55e"></i> Mega Admin Panel</h1>
+  <p>60+ Direct Commands</p>
+</div>
+
+<!-- BOT INFO -->
+<div class="card">
+  <h3><i class="fas fa-robot"></i> Connected Bot</h3>
+  <div class="bot-badge"><i class="fab fa-telegram"></i> @Mathsmatic_bot</div>
+</div>
+
+<!-- 1. MASTER CONTROLS -->
+<div class="card">
+  <h3><i class="fas fa-crown"></i> Master Controls</h3>
+  <div class="grid">
+    <button class="btn bg-green btn-full" onclick="openTg('/starttest all')"><i class="fas fa-rocket"></i> Start ALL Tests</button>
+    <button class="btn bg-red btn-full" onclick="openTg('/stoptest all')"><i class="fas fa-power-off"></i> Stop ALL Tests</button>
+    <button class="btn bg-blue btn-full" onclick="openTg('/cleartest all')"><i class="fas fa-unlock"></i> Clear ALL Locks</button>
+    <button class="btn bg-dark btn-full" onclick="openTg('/teststatus')"><i class="fas fa-chart-line"></i> Check All Status</button>
+    <button class="btn bg-amber" onclick="openTg('/maintenance on')"><i class="fas fa-tools"></i> Maintenance ON</button>
+    <button class="btn bg-green" onclick="openTg('/maintenance off')"><i class="fas fa-check"></i> Maintenance OFF</button>
+    <button class="btn bg-purple btn-full" onclick="openTg('/forceupdate')"><i class="fas fa-sync"></i> Force App Update</button>
+  </div>
+</div>
+
+<!-- 2. SUBJECT-WISE TEST CONTROL -->
+<div class="card">
+  <h3><i class="fas fa-file-alt"></i> Subject-wise Test Control</h3>
+
+  <!-- Maths -->
+  <div class="subject-row">
+    <div class="subject-name"><i class="fas fa-square-root-alt" style="color:#3b82f6"></i> Maths</div>
+    <button class="btn bg-green" onclick="openTg('/starttest maths')">ON</button>
+    <button class="btn bg-red" onclick="openTg('/stoptest maths')">OFF</button>
+    <button class="btn bg-dark" onclick="openTg('/cleartest maths')">Clear</button>
+  </div>
+  <!-- Physics -->
+  <div class="subject-row">
+    <div class="subject-name"><i class="fas fa-atom" style="color:#8b5cf6"></i> Physics</div>
+    <button class="btn bg-green" onclick="openTg('/starttest physics')">ON</button>
+    <button class="btn bg-red" onclick="openTg('/stoptest physics')">OFF</button>
+    <button class="btn bg-dark" onclick="openTg('/cleartest physics')">Clear</button>
+  </div>
+  <!-- Chemistry -->
+  <div class="subject-row">
+    <div class="subject-name"><i class="fas fa-flask" style="color:#10b981"></i> Chemistry</div>
+    <button class="btn bg-green" onclick="openTg('/starttest chemistry')">ON</button>
+    <button class="btn bg-red" onclick="openTg('/stoptest chemistry')">OFF</button>
+    <button class="btn bg-dark" onclick="openTg('/cleartest chemistry')">Clear</button>
+  </div>
+  <!-- Biology -->
+  <div class="subject-row">
+    <div class="subject-name"><i class="fas fa-dna" style="color:#f59e0b"></i> Biology</div>
+    <button class="btn bg-green" onclick="openTg('/starttest biology')">ON</button>
+    <button class="btn bg-red" onclick="openTg('/stoptest biology')">OFF</button>
+    <button class="btn bg-dark" onclick="openTg('/cleartest biology')">Clear</button>
+  </div>
+  <!-- English -->
+  <div class="subject-row">
+    <div class="subject-name"><i class="fas fa-language" style="color:#ef4444"></i> English</div>
+    <button class="btn bg-green" onclick="openTg('/starttest english')">ON</button>
+    <button class="btn bg-red" onclick="openTg('/stoptest english')">OFF</button>
+    <button class="btn bg-dark" onclick="openTg('/cleartest english')">Clear</button>
+  </div>
+  <!-- Hindi -->
+  <div class="subject-row">
+    <div class="subject-name"><i class="fas fa-book-open" style="color:#ec4899"></i> Hindi</div>
+    <button class="btn bg-green" onclick="openTg('/starttest hindi')">ON</button>
+    <button class="btn bg-red" onclick="openTg('/stoptest hindi')">OFF</button>
+    <button class="btn bg-dark" onclick="openTg('/cleartest hindi')">Clear</button>
+  </div>
+</div>
+
+<!-- 3. USER MANAGEMENT -->
+<div class="card">
+  <h3><i class="fas fa-user-shield"></i> User Management</h3>
+  <div class="input-group">
+    <label>Student Mobile Number</label>
+    <input type="tel" id="userMobile" placeholder="10-digit number" maxlength="10">
+  </div>
+  <div class="grid-3">
+    <button class="btn bg-green" onclick="userAction('/approve')">Approve</button>
+    <button class="btn bg-red" onclick="userAction('/block')">Block</button>
+    <button class="btn bg-blue" onclick="userAction('/unblock')">Unblock</button>
+    <button class="btn bg-dark" onclick="userAction('/setname')">Set Name</button>
+    <button class="btn bg-amber" onclick="userAction('/setpass')">Set Pass</button>
+    <button class="btn bg-purple" onclick="userAction('/resetdevice')">Reset Dev</button>
+  </div>
+</div>
+
+<!-- 4. TIMER & SETTINGS -->
+<div class="card">
+  <h3><i class="fas fa-clock"></i> Timer & Settings</h3>
+  <div class="input-group">
+    <label>Set Timer (Minutes)</label>
+    <input type="number" id="timerMins" placeholder="e.g. 60" min="1">
+  </div>
+  <div class="grid">
+    <button class="btn bg-blue btn-full" onclick="setTimer()"><i class="fas fa-clock"></i> Set Timer</button>
+    <button class="btn bg-red btn-full" onclick="openTg('/cleartime')"><i class="fas fa-clock-rotate-left"></i> Remove Timer</button>
+    <button class="btn bg-green btn-full" onclick="openTg('/negative on')"><i class="fas fa-minus-circle"></i> Negative Marking ON</button>
+    <button class="btn bg-red btn-full" onclick="openTg('/negative off')"><i class="fas fa-ban"></i> Negative Marking OFF</button>
+  </div>
+</div>
+
+<!-- 5. ANNOUNCEMENTS & NOTICES -->
+<div class="card">
+  <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+  <div class="input-group">
+    <label>Notice Message (Sabko popup me dikhega)</label>
+    <input type="text" id="noticeMsg" placeholder="e.g. Aaj chhutti hai">
+  </div>
+  <button class="btn bg-amber btn-full" onclick="sendNotice()"><i class="fas fa-paper-plane"></i> Send Notice</button>
+</div>
+
+<!-- 6. APP LINKS SETUP -->
+<div class="card">
+  <h3><i class="fas fa-link"></i> App Links Setup</h3>
+  <div class="input-group">
+    <label>Paste Link Here</label>
+    <input type="url" id="linkUrl" placeholder="https://...">
+  </div>
+  <div class="grid">
+    <button class="btn bg-dark" onclick="setLink('/setncert')">NCERT</button>
+    <button class="btn bg-dark" onclick="setLink('/setnotes')">Notes</button>
+    <button class="btn bg-dark" onclick="setLink('/setpaid')">Paid</button>
+    <button class="btn bg-dark" onclick="setLink('/setfree')">Free</button>
+    <button class="btn bg-dark" onclick="setLink('/setbooks')">Books</button>
+    <button class="btn bg-dark" onclick="setLink('/setbooktest')">Book Test</button>
+    <button class="btn bg-dark" onclick="setLink('/settimetable')">Timetable</button>
+    <button class="btn bg-dark" onclick="setLink('/setsocial')">Social</button>
+    <button class="btn bg-blue btn-full" onclick="setLink('/setinvite')"><i class="fas fa-share-nodes"></i> Set Invite Link</button>
+    <button class="btn bg-purple btn-full" onclick="setLink('/setbanner')"><i class="fas fa-image"></i> Set Banner Image</button>
+  </div>
+</div>
+
+<!-- 7. CUSTOM COMMAND -->
+<div class="card">
+  <h3><i class="fas fa-terminal"></i> Custom Command</h3>
+  <div class="input-group">
+    <input type="text" id="customCmd" placeholder="Type any command...">
+  </div>
+  <button class="btn bg-blue btn-full" onclick="sendCustom()"><i class="fas fa-paper-plane"></i> Send Custom Command</button>
+</div>
+
+<script>
+  const BOT_USERNAME = "Mathsmatic_bot";
+
+  function openTg(command) {
+    const url = `https://t.me/${BOT_USERNAME}?text=${encodeURIComponent(command)}`;
+    window.open(url, '_blank');
+  }
+
+  function userAction(prefix) {
+    const mobile = document.getElementById('userMobile').value.trim();
+    if(mobile.length !== 10) return alert("Sahi 10-digit mobile number daalo!");
+    let cmd = `${prefix} ${mobile}`;
+    
+    if(prefix === '/setname') {
+      const name = prompt("Naya naam kya rakhna hai?");
+      if(!name) return;
+      cmd += `|${name}`;
+    }
+    if(prefix === '/setpass') {
+      const pass = prompt("Naya password kya rakhna hai? (min 6 characters)");
+      if(!pass || pass.length < 6) return alert("Password 6 se zyada ka hona chahiye!");
+      cmd += `|${pass}`;
+    }
+    openTg(cmd);
+  }
+
+  function setTimer() {
+    const mins = document.getElementById('timerMins').value;
+    if(!mins || mins < 1) return alert("Sahi minutes daalo!");
+    openTg(`/settime ${mins}`);
+  }
+
+  function sendNotice() {
+    const msg = document.getElementById('noticeMsg').value.trim();
+    if(!msg) return alert("Message likho pehle!");
+    openTg(`/notice ${msg}`);
+  }
+
+  function setLink(prefix) {
+    const url = document.getElementById('linkUrl').value.trim();
+    if(!url) return alert("Pehle link box me URL paste karo!");
+    openTg(`${prefix} ${url}`);
+  }
+
+  function sendCustom() {
+    const cmd = document.getElementById('customCmd').value.trim();
+    if(!cmd) return alert("Command likho pehle!");
+    if(!cmd.startsWith('/')) return alert("Command / se start hona chahiye!");
+    openTg(cmd);
+  }
+</script>
+</body>
+</html>
